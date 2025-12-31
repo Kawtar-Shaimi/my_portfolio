@@ -1,0 +1,276 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Social Media Sidebar -->
+<div class="social-sidebar">
+    <div class="social-line social-line-top"></div>
+    <a href="https://github.com/Kawtar-Shaimi" target="_blank" class="social-icon" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/kawtar-shaimi" target="_blank" class="social-icon" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://twitter.com/kawtarshaimi" target="_blank" class="social-icon" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://instagram.com/kawtarshaimi" target="_blank" class="social-icon" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="mailto:kawtar.shaimi@example.com" class="social-icon" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+    <div class="social-line social-line-bottom"></div>
+</div>
+
+
+<!-- Hero Section -->
+<section id="home" class="hero animate-on-scroll fade-up">
+    <div class="container hero">
+        <div class="hero-text">
+            <h1>Kawtar Shaimi<br><span>&lt;/&gt; Full-Stack Developer</span></h1>
+            <p>You have ideas, businesses, and I have the developing skills. Let's create something amazing together.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn">Let's Talk</a>
+                <a href="#projects" class="btn"
+                    style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); margin-left: 10px;">My
+                    Work</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-blob"></div>
+            <!-- Placeholder for user image if not uploaded, assuming they will add it -->
+            <img src="{% static 'images/photo1.jpeg' %}" alt="Kawtar Shaimi">
+        </div>
+    </div>
+</section>
+
+<!-- Who I Am -->
+<section id="about" class="animate-on-scroll fade-up">
+    <div class="container">
+        <h2>Who I Am</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="{% static 'images/photo2.jpg' %}" alt="Workspace">
+            </div>
+            <div class="about-text">
+                <h3 class="about-subtitle">Full-Stack Developer & Problem Solver</h3>
+                <p class="about-intro">Hey! I'm <strong>Kawtar Shaimi</strong>, a passionate developer from Safi,
+                    Morocco 🇲🇦. Currently studying at <strong>YOUCODE Campus Safi - UM6P</strong>, I turn ideas into
+                    elegant digital experiences through clean code and creative problem-solving.</p>
+
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-rocket"></i>
+                        <div>
+                            <h4>Always Learning</h4>
+                            <p>Constantly exploring new technologies</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <h4>Full-Stack Expertise</h4>
+                            <p>From React & Angular to Spring Boot & Laravel</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Team Player</h4>
+                            <p>Agile methodologies & collaborative development</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Technologies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What I Do -->
+<section id="services" class="animate-on-scroll fade-up">
+    <div class="container">
+        <h2>What I Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3>Frontend Dev</h3>
+                <p>Creating responsive and interactive user interfaces using modern HTML, CSS, and JS.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-server"></i></div>
+                <h3>Backend Dev</h3>
+                <p>Building robust server-side logic and databases with Django and PostgreSQL.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Responsive Design</h3>
+                <p>Ensuring your website looks amazing on every device, mobile or desktop.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section id="projects" class="projects animate-on-scroll fade-up">
+    <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <div class="project-img">
+                    {% if project.image %}
+                    <img src="{{ project.image }}" alt="{{ project.title }}">
+                    {% else %}
+                    <img src="https://via.placeholder.com/350x200.png?text={{ project.title }}"
+                        alt="{{ project.title }}">
+                    {% endif %}
+                </div>
+                <div class="project-info">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description|truncatewords:20 }}</p>
+                    <div class="project-tags">
+                        {% if project.frontend_list %}
+                        {% for tech in project.frontend_list %}
+                        <span class="tag tag-frontend">{{ tech }}</span>
+                        {% endfor %}
+                        {% endif %}
+                        {% if project.backend_list %}
+                        {% for tech in project.backend_list %}
+                        <span class="tag tag-backend">{{ tech }}</span>
+                        {% endfor %}
+                        {% endif %}
+                        {% if project.database_list %}
+                        {% for tech in project.database_list %}
+                        <span class="tag tag-database">{{ tech }}</span>
+                        {% endfor %}
+                        {% endif %}
+                        {% if project.security_list %}
+                        {% for tech in project.security_list %}
+                        <span class="tag tag-security">{{ tech }}</span>
+                        {% endfor %}
+                        {% endif %}
+                        {% if project.architecture_list %}
+                        {% for tech in project.architecture_list %}
+                        <span class="tag tag-architecture">{{ tech }}</span>
+                        {% endfor %}
+                        {% endif %}
+                        {% if project.tools_list %}
+                        {% for tech in project.tools_list %}
+                        <span class="tag tag-tools">{{ tech }}</span>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="project-links">
+                        {% if project.github_link %}
+                        <a href="{{ project.github_link }}" class="link-btn" target="_blank"><i
+                                class="fab fa-github"></i> GitHub</a>
+                        {% endif %}
+                        {% if project.demo_link %}
+                        <a href="{{ project.demo_link }}" class="link-btn" target="_blank"><i
+                                class="fas fa-external-link-alt"></i> Demo</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No projects added yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Professional Experience -->
+<section id="experience" class="experience animate-on-scroll fade-up">
+    <div class="container">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            {% for exp in experiences %}
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h3>{{ exp.position }}</h3>
+                        <div class="timeline-meta">
+                            <span class="company"><i class="fas fa-building"></i> {{ exp.company }}</span>
+                            {% if exp.location %}
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> {{ exp.location }}</span>
+                            {% endif %}
+                            <span class="duration"><i class="fas fa-calendar-alt"></i> {{ exp.start_date }} - {{ exp.end_date }}</span>
+                        </div>
+                    </div>
+                    <p class="timeline-description">{{ exp.description }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p style="text-align: center; color: var(--text-light);">No experience entries yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="animate-on-scroll fade-up">
+    <div class="container">
+        <h2>Skills & Technologies</h2>
+        <div class="skills-slider-container">
+            <div class="skills-track">
+                {% for skill in skills %}
+                <div class="skill-item">
+                    {% if skill.icon %}
+                    <img src="{{ skill.icon }}" alt="{{ skill.name }}" style="width: 48px; height: 48px; object-fit: contain; margin-bottom: 0.5rem;">
+                    {% elif skill.icon_class %}
+                    <i class="{{ skill.icon_class }} fa-3x"
+                        style="color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                    {% else %}
+                    <i class="fas fa-code fa-3x" style="color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                    {% endif %}
+                    <p>{{ skill.name }}</p>
+                </div>
+                {% empty %}
+                <p>Skills loading...</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="animate-on-scroll fade-up">
+    <div class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <form method="POST" action="{% url 'index' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
