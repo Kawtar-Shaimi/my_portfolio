@@ -10,6 +10,7 @@
     --gradient: linear-gradient(135deg, #8A2BE2 0%, #FF69B4 100%);
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --font-main: 'Poppins', sans-serif;
+    --navbar-height: 60px;
 }
 
 * {
@@ -1118,16 +1119,17 @@ footer {
    ======================================== */
 
 .social-sidebar {
-    position: sticky;
+    position: fixed;
     left: 30px;
-    top: 50%;
+    top: calc(50% + var(--navbar-height) / 2);
     transform: translateY(-50%);
-    z-index: 1000;
+    z-index: 900;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
 }
+
 
 .social-line {
     width: 2px;
