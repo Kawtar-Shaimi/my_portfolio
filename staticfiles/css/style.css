@@ -525,6 +525,9 @@ h2::after {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .project-img {
@@ -545,6 +548,13 @@ h2::after {
 
 .project-info {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-content {
+    flex-grow: 1;
 }
 
 .project-tags {
@@ -631,9 +641,11 @@ h2::after {
 }
 
 .project-links {
-    margin-top: 1rem;
+    margin-top: auto;
     display: flex;
     gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .link-btn {
@@ -1106,7 +1118,7 @@ footer {
    ======================================== */
 
 .social-sidebar {
-    position: fixed;
+    position: absolute;
     left: 30px;
     top: 50%;
     transform: translateY(-50%);

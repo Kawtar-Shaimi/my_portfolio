@@ -3,30 +3,29 @@
 
 {% block content %}
 
-<!-- Social Media Sidebar -->
-<div class="social-sidebar">
-    <div class="social-line social-line-top"></div>
-    <a href="https://github.com/Kawtar-Shaimi" target="_blank" class="social-icon" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/kawtar-shaimi" target="_blank" class="social-icon" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-    <a href="https://twitter.com/kawtarshaimi" target="_blank" class="social-icon" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://instagram.com/kawsarsh_" target="_blank" class="social-icon" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="mailto:kawtar.shaimi8@example.com" class="social-icon" aria-label="Email">
-        <i class="fas fa-envelope"></i>
-    </a>
-    <div class="social-line social-line-bottom"></div>
-</div>
-
-
 <!-- Hero Section -->
 <section id="home" class="hero animate-on-scroll fade-up">
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <div class="social-line social-line-top"></div>
+        <a href="https://github.com/Kawtar-Shaimi" target="_blank" class="social-icon" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/kawtar-shaimi" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://twitter.com/kawtarshaimi" target="_blank" class="social-icon" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com/kawsarsh_" target="_blank" class="social-icon" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:kawtar.shaimi8@example.com" class="social-icon" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <div class="social-line social-line-bottom"></div>
+    </div>
+
     <div class="container hero">
         <div class="hero-text">
             <h1>Kawtar Shaimi<br><span>&lt;/&gt; Full-Stack Developer</span></h1>
@@ -140,39 +139,41 @@
                     {% endif %}
                 </div>
                 <div class="project-info">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description|truncatewords:20 }}</p>
-                    <div class="project-tags">
-                        {% if project.frontend_list %}
-                        {% for tech in project.frontend_list %}
-                        <span class="tag tag-frontend">{{ tech }}</span>
-                        {% endfor %}
-                        {% endif %}
-                        {% if project.backend_list %}
-                        {% for tech in project.backend_list %}
-                        <span class="tag tag-backend">{{ tech }}</span>
-                        {% endfor %}
-                        {% endif %}
-                        {% if project.database_list %}
-                        {% for tech in project.database_list %}
-                        <span class="tag tag-database">{{ tech }}</span>
-                        {% endfor %}
-                        {% endif %}
-                        {% if project.security_list %}
-                        {% for tech in project.security_list %}
-                        <span class="tag tag-security">{{ tech }}</span>
-                        {% endfor %}
-                        {% endif %}
-                        {% if project.architecture_list %}
-                        {% for tech in project.architecture_list %}
-                        <span class="tag tag-architecture">{{ tech }}</span>
-                        {% endfor %}
-                        {% endif %}
-                        {% if project.tools_list %}
-                        {% for tech in project.tools_list %}
-                        <span class="tag tag-tools">{{ tech }}</span>
-                        {% endfor %}
-                        {% endif %}
+                    <div class="project-content">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description|truncatewords:20 }}</p>
+                        <div class="project-tags">
+                            {% if project.frontend_list %}
+                            {% for tech in project.frontend_list %}
+                            <span class="tag tag-frontend">{{ tech }}</span>
+                            {% endfor %}
+                            {% endif %}
+                            {% if project.backend_list %}
+                            {% for tech in project.backend_list %}
+                            <span class="tag tag-backend">{{ tech }}</span>
+                            {% endfor %}
+                            {% endif %}
+                            {% if project.database_list %}
+                            {% for tech in project.database_list %}
+                            <span class="tag tag-database">{{ tech }}</span>
+                            {% endfor %}
+                            {% endif %}
+                            {% if project.security_list %}
+                            {% for tech in project.security_list %}
+                            <span class="tag tag-security">{{ tech }}</span>
+                            {% endfor %}
+                            {% endif %}
+                            {% if project.architecture_list %}
+                            {% for tech in project.architecture_list %}
+                            <span class="tag tag-architecture">{{ tech }}</span>
+                            {% endfor %}
+                            {% endif %}
+                            {% if project.tools_list %}
+                            {% for tech in project.tools_list %}
+                            <span class="tag tag-tools">{{ tech }}</span>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="project-links">
                         {% if project.github_link %}
@@ -231,7 +232,8 @@
                 {% for skill in skills %}
                 <div class="skill-item">
                     {% if skill.icon %}
-                    <img src="{{ skill.icon }}" alt="{{ skill.name }}" style="width: 48px; height: 48px; object-fit: contain; margin-bottom: 0.5rem;">
+                    <img src="{{ skill.icon }}" alt="{{ skill.name }}"
+                        style="width: 48px; height: 48px; object-fit: contain; margin-bottom: 0.5rem;">
                     {% elif skill.icon_class %}
                     <i class="{{ skill.icon_class }} fa-3x"
                         style="color: var(--primary-color); margin-bottom: 0.5rem;"></i>

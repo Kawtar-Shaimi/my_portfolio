@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Scroll Animations ---
     const observerOptions = {
         root: null,
